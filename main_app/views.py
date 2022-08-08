@@ -1,12 +1,19 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Hospital
 
 class HospitalCreate(CreateView):
   model = Hospital
   fields = '__all__'
-  success_url: '/hospitals/'
+
+class HospitalUpdate(UpdateView):
+  model = Hospital
+  fields = '__all__'
+
+class HospitalDelete(DeleteView):
+  model = Hospital
+  success_url = '/hospitals/'
 
 def login(request):
   return HttpResponse('<h1>Hello World</h1>')

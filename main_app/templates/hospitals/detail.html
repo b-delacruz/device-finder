@@ -18,6 +18,10 @@
       alt="A skater boy cat"
     >
   </div>
+  <div class="hospital-actions">
+    <a href="{% url 'hospitals_update' hospital.id %}" class="btn warn">Edit</a>
+    <a href="{% url 'hospitals_delete' hospital.id %}" class="btn danger">Delete</a>
+  </div>
   <div class="hospital-details">
     <h1>{{ hospital.name }}</h1>
 
