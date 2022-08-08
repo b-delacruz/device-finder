@@ -8,12 +8,11 @@
 {% block content %}
 
 {% if hospital %}
-<h1>{{ hospital.name }}</h1>
+  <h1>{{ hospital.name }}</h1>
 {% else %}
 <div class="page-header">
   <h1>Add a Hospital</h1>
 {% endif %}
-  <img src="{% static 'images/nerd-cat.svg' %}" alt="A cat using a computer"/>
 </div>
 <form action="" method="post" class="form-container">
   {% csrf_token %}

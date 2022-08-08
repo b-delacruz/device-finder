@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Hospital
 
@@ -15,8 +14,7 @@ class HospitalDelete(DeleteView):
   model = Hospital
   success_url = '/hospitals/'
 
-def login(request):
-  return HttpResponse('<h1>Hello World</h1>')
+
 def home(request):
   return render(request, 'home.html')
 def hospitals(request):
