@@ -20,5 +20,35 @@
     <h1>{{ hospital.name }}</h1>
   </div>
 </section>
+<div class="feedings-toy-container">
+  <section class="feedings">
+    <div class="subsection-title">
+      <h2>Devices</h2>
+    </div>
+    <h3>Add a Device</h3>
+      <form
+        action="{% url 'add_device' hospital.id %}"
+        method="post" 
+        class="subsection-content"
+      >
+        {% csrf_token %}
+        {{ device_form.as_p }}
+        <button type="submit" class="btn submit">Add Device</button>
+      </form>
+    <table>
+      <thead>
+        <tr><th>Device Name</th><th>Consignment?</th></tr>
+      </thead>
+      <tbody>
+        {% for device in hospital.device_set.all %}
+          <tr>
+            <td>{{device.name}}</td>
+            <td>{{device.status}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
 
 {% endblock %}

@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Hospital
+from .forms import DeviceForm
 
 class HospitalCreate(CreateView):
   model = Hospital
@@ -22,7 +23,15 @@ def hospitals(request):
   return render(request, 'hospitals/index.html', { 'hospitals': hospitals })
 def hospitals_detail(request, hospital_id):
   hospital = Hospital.objects.get(id=hospital_id)
-  return render(request, 'hospitals/detail.html', { 'hospital': hospital })
+  device_form = DeviceForm()
+  return render(request, 'hospitals/detail.html', { 'hospital': hospital, 'device_form': device_form })
+def add_device(request, hospital_id):
+  form = DeviceForm(request.POST)
+  if form.is_valid():
+    new_device = form.save(commit=False)
+    new_device.hospital_id = hospital_id
+    new_device.save()
+  return redirect('hospitals_detail', hospital_id=hospital_id)
 def hospitals_create(request, hospital_id):
   hospital = Hospital.objects.get(id=hospital_id)
   return render(request, 'hospitals/detail.html', { 'hospital': hospital })
