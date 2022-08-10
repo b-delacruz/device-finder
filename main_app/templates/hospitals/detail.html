@@ -35,6 +35,7 @@
         {{ device_form.as_p }}
         <button type="submit" class="btn submit">Add Device</button>
       </form>
+    {% if hospital.device_set.all.count %}
     <table>
       <thead>
         <tr><th>Device Name</th><th>Consignment?</th></tr>
@@ -42,12 +43,17 @@
       <tbody>
         {% for device in hospital.device_set.all %}
           <tr>
-            <td>{{device.name}}</td>
-            <td>{{device.status}}</td>
+            <td>{{device.get_name_display}}</td>
+            <td>{{device.get_status_display}}</td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
+    {% else %}
+      <div class="subsection-content">
+        <p>{{hospital.name}} has no devices 😔</p>
+      </div>
+    {% endif %}
   </section>
 </div>
 
