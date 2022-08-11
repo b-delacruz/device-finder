@@ -5,32 +5,31 @@
 <link 
   rel="stylesheet"
   type="text/css"
-  href="{% static 'css/hospitals.css' %}"
+  href="{% static 'css/hospitals/hospital-index.css' %}"
 />
 {% endblock %}
 
 {% block content %}
 
-<section class="page-header">
+<section class="my-hospitals">
   <h1>My Hospitals</h1>
-</section>
 
-<section class="add-hospital">
   <a href="{% url 'hospitals_create' %}">
     <h3>Add Hospital</h3>
   </a>
 </section>
 
+  
 <section class="card-container">
   {% for hospital in hospitals %}
+  <a href="{% url 'hospitals_detail' hospital.id %}">
     <div class="card">
-      <a href="{% url 'hospitals_detail' hospital.id %}">
-        <div class="card-content">
-          <h2 class="card-title">{{ hospital.name }}</h2>
-        </div>
-      </a>  
+      <div class="card-content">
+        <h2 class="card-title">{{ hospital.name }}</h2>
+      </div>
     </div>
+  </a>  
   {% endfor %}
 </section>
 
-{% endblock %}
+  {% endblock %}

@@ -6,25 +6,15 @@
   justify-content: center;
 }
 
-.hospital-img {
-  width: 75%;
-  max-width: 350px;
-}
-
-.usr-img {
-  width: 100%;
-  border-radius: var(--card-border-radius);
-}
-
 .hospital-details {
   width: 98%;
 }
 
 .hospital-actions {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
-.feedings-toy-container {
+.device-container {
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
@@ -41,36 +31,6 @@
   margin: 0 8px;
 }
 
-.toy-container {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.color-block {
-  opacity: 0.8;
-  height: 25px;
-  width: 25px;
-  margin-right: 10px;
-}
-
-.unfed,
-.fed,
-.no-toys,
-.all-toys {
-  margin: 0;
-  font-weight: bold;
-}
-
-.unfed,
-.no-toys {
-  color: var(--danger);
-}
-
-.fed,
-.all-toys {
-  color: var(--submit);
-}
 
 .hospital-details h1 {
   font-size: var(--font-xxl);
@@ -94,7 +54,7 @@
   margin: 5px 0;
 }
 
-.feedings-toy-container > section {
+.device-container > section {
   width: 80%;
   min-width: 360px;
   border: var(--borders);
@@ -116,14 +76,12 @@
   margin-left: 16px;
 }
 
-.feedings h2,
-.toys h2 {
+.devices h2 {
   font-size: 3.2rem;
   margin: 0;
 }
 
-.feedings h3,
-.toys h3 {
+.devices h3 {
   font-size: var(--font-xl);
   margin: 10px 0;
 }
@@ -140,41 +98,28 @@
   padding: 3px;
 }
 
-.feedings table {
+.devices table {
   width: calc(100% - 16px);
   text-align: left;
   border-collapse: collapse;
   margin: 0 8px;
 }
 
-.feedings td {
+.devices td {
   padding: 8px 5px;
   font-size: var(--font-reg);
 }
 
-.feedings th {
+.devices th {
   font-size: var(--font-l);
   padding: 5px 5px 0;
   border-bottom: rgb(36, 116, 248) solid 2px;
 }
 
-.feedings tr:nth-child(even) {
+.devices tr:nth-child(even) {
   background-color: #f3f3fd;
 }
 
-.toy-container p {
-  margin: 12px 0;
-}
-
-.toy-container a {
-  text-decoration: none;
-  color: #111;
-}
-
-.toy-container .btn {
-  padding: 3px 10px;
-  margin-left: 10px;
-}
 
 #file-input {
   overflow: hidden;
@@ -195,25 +140,29 @@
     justify-content: start;
   }
 
+  .hospital-actions{
+    display: flex;
+    flex-direction: row;
+  }
   .hospital-img {
     width: 25%;
     max-width: 250px;
     margin-right: 25px;
   }
 
-  .feedings-toy-container {
+  .device-container {
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
   }
 
-  .feedings-toy-container > section {
+  .device-container > section {
     width: 45%;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  .feedings-toy-container {
+  .device-container {
     padding: 0 40px;
   }
 }

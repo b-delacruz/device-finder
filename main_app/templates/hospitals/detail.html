@@ -12,16 +12,18 @@
 {% block content %}
 
 <section class="hospital-container">
-  <div class="hospital-actions">
+  <div class="hospital-details"> 
+    <h1>{{ hospital.name }}</h1>
+  </div>
+  <div class="hospital-actions"> 
     <a href="{% url 'hospitals_update' hospital.id %}" class="btn warn">Edit</a>
     <a href="{% url 'hospitals_delete' hospital.id %}" class="btn danger">Delete</a>
   </div>
-  <div class="hospital-details">
-    <h1>{{ hospital.name }}</h1>
-  </div>
+
 </section>
-<div class="feedings-toy-container">
-  <section class="feedings">
+
+<div class="device-container">
+  <section class="devices">
     <div class="subsection-title">
       <h2>Devices</h2>
     </div>

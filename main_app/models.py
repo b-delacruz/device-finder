@@ -1,10 +1,7 @@
-from telnetlib import STATUS
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-# Create your models here.
-# from django.contrib.auth.models import User
 
 DEVICES = (
   ('M', 'Montage'),
@@ -20,7 +17,7 @@ STATUS = (
   ('C', 'Consignment'),
   ('L', 'Loaner'),
 )
-
+  
 class Hospital(models.Model):
   name = models.CharField('Hospital Name', max_length=100)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
