@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Hospital
 from .forms import DeviceForm
+from django.contrib.auth.views import LoginView
 
 class HospitalCreate(CreateView):
   model = Hospital
@@ -15,9 +16,10 @@ class HospitalDelete(DeleteView):
   model = Hospital
   success_url = '/hospitals/'
 
-
-def home(request):
-  return render(request, 'home.html')
+class Home(LoginView):
+  template_name = 'home.html'
+  def home(request):
+    return render(request, 'home.html')
 def hospitals(request):
   hospitals = Hospital.objects.all()
   return render(request, 'hospitals/index.html', { 'hospitals': hospitals })
