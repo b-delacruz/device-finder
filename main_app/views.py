@@ -3,6 +3,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Hospital
 from .forms import DeviceForm
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+
 
 class HospitalCreate(CreateView):
   model = Hospital
@@ -23,7 +26,7 @@ class Home(LoginView):
   template_name = 'home.html'
   
 def hospitals(request):
-  hospitals = Hospital.objects.all()
+  hospitals = Hospital.objects.filter(user=request.user)
   return render(request, 'hospitals/index.html', { 'hospitals': hospitals })
 def hospitals_detail(request, hospital_id):
   hospital = Hospital.objects.get(id=hospital_id)
@@ -39,3 +42,16 @@ def add_device(request, hospital_id):
 def hospitals_create(request, hospital_id):
   hospital = Hospital.objects.get(id=hospital_id)
   return render(request, 'hospitals/detail.html', { 'hospital': hospital })
+def signup(request):
+  error_message = ''
+  if request.method == 'POST':
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+      user = form.save()
+      login(request, user)
+      return redirect('hospitals')
+    else:
+      error_message = 'Invalid sign up - try again'
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'signup.html', context)
