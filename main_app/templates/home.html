@@ -29,7 +29,12 @@
   </form>
   {% endif %}
 
+  {% if user.is_authenticated %}
+
   <a href="{% url 'logout' %}"><button type="submit" class="btn submit">Logout</button></a> 
+
+  {% endif %}
+  
   {% endblock %}
   
 </body>

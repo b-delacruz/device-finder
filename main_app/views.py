@@ -7,6 +7,9 @@ from django.contrib.auth.views import LoginView
 class HospitalCreate(CreateView):
   model = Hospital
   fields = '__all__'
+  def form_valid(self, form):
+    form.instance.user = self.request.user  
+    return super().form_valid(form)
 
 class HospitalUpdate(UpdateView):
   model = Hospital
@@ -18,8 +21,7 @@ class HospitalDelete(DeleteView):
 
 class Home(LoginView):
   template_name = 'home.html'
-  def home(request):
-    return render(request, 'home.html')
+  
 def hospitals(request):
   hospitals = Hospital.objects.all()
   return render(request, 'hospitals/index.html', { 'hospitals': hospitals })
