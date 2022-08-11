@@ -17,7 +17,7 @@
   {% block content %}
   
   {% if not user.is_authenticated %}
-  
+
   <h1>Welcome to Device Finder!</h1>
 
   <form action="{% url 'home' %}" method="post" class="login">
@@ -28,6 +28,8 @@
     <button type="submit" class="btn submit">Login</button>
   </form>
   {% endif %}
+
+  <a href="{% url 'logout' %}"><button type="submit" class="btn submit">Logout</button></a> 
   {% endblock %}
   
 </body>
