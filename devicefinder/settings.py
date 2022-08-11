@@ -1,14 +1,16 @@
 from pathlib import Path
 import os
+import environ
+env = environ.Env()
+environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY= env('SECRET_KEY')
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-dy-k6bcblu(grik)!j_0vp4xg)+i#yt=@-tsa*uaxi+!8c)^b$'
+DEBUG = env('DEBUG') == 'True' 
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
 ALLOWED_HOSTS = []
 
@@ -107,3 +109,8 @@ LOGIN_REDIRECT_URL = 'hospitals'
 LOGOUT_REDIRECT_URL = 'home'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+import django_heroku
+django_heroku.settings(locals())
