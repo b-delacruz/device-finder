@@ -18,14 +18,19 @@
   
   {% if not user.is_authenticated %}
 
-  <h1>Welcome to Device Finder!</h1>
+  <h1>Welcome to Med Device Helper!</h1>
 
   <form action="{% url 'home' %}" method="post" class="login">
     <h1>Login</h1>
     {% csrf_token %}
     {{ form.as_p }}
     <input type="hidden" name="next" value="{{ next }}">
-    <button type="submit" class="btn submit">Login</button>
+    <div class='btn-login'> 
+      <button type="submit" class="btn warn">Login</button>
+      <button class="btn warn">
+        <a href="{% url 'signup' %}">Signup</a>
+      </button>
+    </div>
   </form>
   {% endif %}
 

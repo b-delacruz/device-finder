@@ -1,1 +1,1 @@
-# device-finder
+# med-device-helper
