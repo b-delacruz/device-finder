@@ -27,6 +27,10 @@ a{
   max-width: 375px;
 }
 
+.logo-text{
+  font-size: 32px;
+}
+
 .cat-container {
   width: 80%;
 }

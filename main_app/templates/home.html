@@ -14,33 +14,47 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
   {% endblock %}
   
-  {% block content %}
+{% block content %}
   
   {% if not user.is_authenticated %}
 
-  <h1>Welcome to Med Device Helper!</h1>
+  <section class="logo-container">
+    <h1 class="logo-text">Welcome to Med Device Helper!</h1>
+  </section>
 
-  <form action="{% url 'home' %}" method="post" class="login">
-    <h1>Login</h1>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="hidden" name="next" value="{{ next }}">
-    <div class='btn-login'> 
-      <button type="submit" class="btn warn">Login</button>
-      <button class="btn warn">
-        <a href="{% url 'signup' %}">Signup</a>
-      </button>
+ <section>
+    <form action="{% url 'home' %}" method="post" class="login">
+      <h1>Login</h1>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="hidden" name="next" value="{{ next }}">
+      <div class='btn-login'> 
+        <button type="submit" class="btn warn">Login</button>
+        <button class="btn warn">
+          <a href="{% url 'signup' %}">Signup</a>
+        </button>
+      </div>
+    </form>
+  </section>
+
+{% elif user.is_authenticated %}
+
+<section class="logo-container">
+  <h1 class="logo-text">Welcome to Med Device Helper!</h1>
+</section>
+
+<section>
+    <div class='btn-logout'> 
+      <button type="submit" class="btn warn"><a href="{% url 'logout' %}">Logout</a></button>
     </div>
-  </form>
-  {% endif %}
+</section>
 
-  {% if user.is_authenticated %}
-
-  <a href="{% url 'logout' %}"><button type="submit" class="btn submit">Logout</button></a> 
-
-  {% endif %}
+{% endif %}
   
+
   {% endblock %}
   
 </body>
 </html>
+
+

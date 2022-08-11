@@ -16,9 +16,9 @@ a{
 }
 
 a:hover{
-  color: blue;
+  color:  rgb(190, 62, 23);
 }
 
 .card:hover{
-  background-color: brown;
+  background-color: #dee2ce;
 }
