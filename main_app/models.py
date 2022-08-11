@@ -2,7 +2,6 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-
 DEVICES = (
   ('M', 'Montage'),
   ('N', 'Neuro Combo 1.5mm'),

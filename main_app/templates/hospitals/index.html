@@ -33,3 +33,13 @@
 </section>
 
   {% endblock %}
+
+  <div class="card-deck">
+    {% for book in books %}
+        {% include 'books/book_element.html' %}
+        {% if forloop.counter|divisibleby:"5"  %}
+            {# Close the current deck and start a new one %}
+            </div><div class="card-deck">
+        {% endif %}
+    {% endfor %}
+</div><!-- The final dec

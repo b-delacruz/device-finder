@@ -1,17 +1,17 @@
 from pathlib import Path
 import os
 
-# import environ
-# env = environ.Env()
-# environ.Env.read_env()
+import environ
+env = environ.Env()
+environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-# vvv -- Make sure to edit back 
+
 SECRET_KEY= 'fdsafhi84rfbjh38'
 
-DEBUG = 'True' 
-# ^^^ -- Make sure to edit back 
-# DEBUG_PROPAGATE_EXCEPTIONS = True
+DEBUG = env('DEBUG') == 'True' 
+
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
 ALLOWED_HOSTS = []
 
