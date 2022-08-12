@@ -17,7 +17,7 @@ Often times, medical sales professionals travel from hospital to hospital with t
 
 <img width="600" alt="Wireframe" src="https://i.imgur.com/sfz4QxO.png">
 
-### [Entity Relationship Diagram]
+### [Entity Relationship Diagram](https://whimsical.com/erd-med-device-helper-REk977u8U2nv9Vab5Vjopb)
 <img width="600" alt="ERD" src="https://i.imgur.com/KPHutFG.png">
 
 ## Technologies
